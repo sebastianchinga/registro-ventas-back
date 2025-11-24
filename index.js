@@ -20,7 +20,7 @@ const URL_PERMITIDOS = [process.env.URL_FRONTEND];
 
 const corsOptions = {
     origin: function (origin, callback) {
-        if (URL_PERMITIDOS.indexOf(origin) !== -1 || !origin) {
+        if (!origin || URL_PERMITIDOS.includes(origin)) {
             callback(null, true);
         } else {
             callback(new Error('No permitido por CORS'));
